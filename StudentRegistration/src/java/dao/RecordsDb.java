@@ -103,7 +103,7 @@ static Connection CN = null;
        
       PreparedStatement pst = CN.prepareStatement("delete from records where id = ?");
        
-       pst.setInt(i, i);
+       pst.setInt(1, i);
        
       pst.executeUpdate();
        
@@ -120,5 +120,77 @@ static Connection CN = null;
            Logger.getLogger(RecordsDb.class.getName()).log(Level.SEVERE, null, ex);
        }
    
+   }
+        public static void editRecords(Record record)
+   {   
+       
+       CN = DataBaseConnection.connect();
+      
+        
+   
+       try {
+       
+      PreparedStatement pst = CN.prepareStatement("update records set studentname=?,studentcourse=?,studentfees=? where id = ?");
+       
+      pst.setString(1, record.getStudentName());
+       pst.setString(2, record.getStudentCourse());
+        pst.setDouble(3, record.getStudentfees());
+         pst.setInt(4, record.getStudentId());
+      pst.executeUpdate();
+       
+     
+    
+       
+              
+       } catch (SQLException ex) {
+           Logger.getLogger(RecordsDb.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       try {
+           CN.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(RecordsDb.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   
+   }
+
+        
+        public static Record getOneRecord(int i)
+   {   
+       Record record = null;
+       CN = DataBaseConnection.connect();
+      
+   
+       try {
+       
+      PreparedStatement pst = CN.prepareStatement("select * from records where id=?");
+       
+       pst.setInt(1,i);
+       
+     
+      ResultSet rs = pst.executeQuery();
+      
+      if (rs.next())
+          
+      {
+         
+          record = new Record();
+          record.setStudentId(rs.getInt("id"));
+          record.setStudentName(rs.getString("studentname"));
+          record.setStudentCourse(rs.getString("studentcourse"));
+          record.setStudentfees(rs.getDouble("studentfees"));
+      }
+    
+         
+              
+       } catch (SQLException ex) {
+           Logger.getLogger(RecordsDb.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       try {
+           CN.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(RecordsDb.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   
+       return record;
    }
 }

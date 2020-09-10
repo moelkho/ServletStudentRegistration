@@ -12,6 +12,18 @@
         <servlet-name>deleteStudentServlet</servlet-name>
         <servlet-class>controlers.deleteStudentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditStudentServlet</servlet-name>
+        <servlet-class>controlers.EditStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetOneStudentServlet</servlet-name>
+        <servlet-class>controlers.GetOneStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStudentByNameServlet</servlet-name>
+        <servlet-class>controlers.GetStudentByNameServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StudentRecordServlet</servlet-name>
         <url-pattern>/StudentRecordServlet</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>deleteStudentServlet</servlet-name>
         <url-pattern>/deleteStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditStudentServlet</servlet-name>
+        <url-pattern>/EditStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetOneStudentServlet</servlet-name>
+        <url-pattern>/GetOneStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStudentByNameServlet</servlet-name>
+        <url-pattern>/GetStudentByNameServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
