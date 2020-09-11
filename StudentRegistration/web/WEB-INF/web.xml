@@ -6,11 +6,11 @@
     </servlet>
     <servlet>
         <servlet-name>getStudentsServlet</servlet-name>
-        <servlet-class>controlers.getStudentsServlet</servlet-class>
+        <servlet-class>controlers.GetStudentsServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deleteStudentServlet</servlet-name>
-        <servlet-class>controlers.deleteStudentServlet</servlet-class>
+        <servlet-class>controlers.DeleteStudentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditStudentServlet</servlet-name>

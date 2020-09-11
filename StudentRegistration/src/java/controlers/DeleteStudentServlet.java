@@ -6,10 +6,8 @@
 package controlers;
 
 import dao.RecordsDb;
-import entities.Record;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-public class GetStudentByNameServlet extends HttpServlet {
+public class DeleteStudentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,13 +33,14 @@ public class GetStudentByNameServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String name = request.getParameter("studentname");
-            List<Record> student = RecordsDb.getStudentByName(name);
-
-            request.setAttribute("student", student);
-
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-            rd.forward(request, response);
+            
+          int i = Integer.parseInt(request.getParameter("id"));
+          
+          RecordsDb.deleteRecords(i);
+          
+          RequestDispatcher rd = request.getRequestDispatcher("getStudentsServlet");
+          rd.forward(request, response);
+          
         }
     }
 
